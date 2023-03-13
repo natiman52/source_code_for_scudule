@@ -1,0 +1,128 @@
+.nav{
+    background-color: green;
+    margin:0;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.toggle-btn{
+    color:white;
+    background-color: black;
+    border-color: white;
+    margin-bottom:4px;
+    margin-top:4px ;
+    padding:5px 12px;
+    border-radius: 7px;
+}
+.toggle-btn:hover{
+    color:white;
+    background-color:black;
+
+}
+.toggled .form-redirect-button{
+    margin:6px 0;
+    width:100%;
+    text-align: center;
+    font-weight: 800;
+    font-size: medium;
+    font-style: italic;
+    color: rgb(31, 31, 31);
+}
+.title-holder{
+    margin-left:13px;
+}
+.title-holder h1{
+    margin-bottom: 0;
+}
+.ph-display-none .form-redirect-button{
+    margin:6.5px 5px 0 0;
+    color: rgb(31, 31, 31);
+    text-align: center;
+    font-weight: 800;
+    font-size: medium;
+    font-style: italic;
+}
+.drop-menu-icon{
+    height: 100%;
+    margin:0 5px;
+    cursor: pointer;
+}
+.navbar-create-pc{
+    margin:0 4px 0 2px;
+    cursor: pointer;
+    padding: 4px 8px 4px 8px;
+    border: 2px solid rgb(156, 200, 255);
+    border-radius:5px;
+    font-weight: 600;
+}
+.navbar-logout-pc{
+    margin:0 4px 0 2px;
+    cursor: pointer;
+    padding: 4px 8px 4px 8px;
+    border: 2px solid rgb(255, 50, 126);
+    border-radius:5px;
+    font-weight: 600;
+}
+.navbar-signup-pc{
+    margin:0 4px 0 2px;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 4px 8px 4px 8px;
+    border: 2px solid rgb(100, 255, 126);
+    border-radius:5px;
+}
+.navbar-toggler{
+    margin-right:10px;
+}
+.logo-container{
+    margin-left:20px;
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+.abgs{
+    font-size: x-large;
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 0;
+    color:white;
+    font-size: 24px;
+}
+.navbar-element-1{
+    display:flex;
+    align-items:flex-end;
+    font-size:18px;
+    margin-bottom:2px;
+}
+.SCH{
+    font-size: 16px;
+    margin-bottom: 5px;;
+    margin-left: 7px;
+    font-weight: 550;
+}
+.drop-me{
+    margin-bottom: 5px;;
+    margin-left: 7px; 
+}
+.navbar-create-ph{
+    background-color: transparent;
+    padding:5px 0 5px 20px;
+    margin:5px 0 8px 0;
+    font-weight: 550;
+    font-size: 16px;
+}
+.navbar-logout-ph{
+    background-color: transparent;
+    padding:5px 0 5px 20px;
+    margin:5px 0 8px 0;   
+    font-weight: 550;
+    font-size: 16px;
+}
+.navbar-login-ph{
+    background-color: transparent;
+    padding:5px 0 5px 20px;
+    margin:5px 0 8px 0;   
+    font-weight: 550;
+    font-size: 16px;
+}

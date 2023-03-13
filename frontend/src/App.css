@@ -1,0 +1,234 @@
+.root{
+  overflow: hidden;
+}
+.wrapper{
+  background-color:rgb(252, 246, 235);
+}
+*,*::after,*::before{
+  box-sizing: content-box;
+}
+
+.absoulute-one{
+  position:fixed;
+  background-color: white;
+  text-align: center;
+  z-index: 100;
+  left:50%;
+  top:50%;
+ font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ border-radius: 5px;
+ transform: translate(-50%,-50%);
+ box-shadow: 3px 3px 19px 1px rgb(141, 141, 141);
+
+  
+}
+.rel-1 .sign-up-logo{
+ font-weight: 700;
+ font-size: 22px;
+ font-style: oblique;
+ text-decoration: underline;
+  cursor:default;
+}
+.create-icon{
+  font-weight: 650;
+  font-size: 22px;
+  font-style: oblique;
+   cursor:default;
+  text-decoration: underline;
+}
+.absoulute-one span{
+  display: block;
+  font-weight: 600;
+  font-style: oblique;
+  margin-left:auto;
+  margin-right:auto;
+}
+.absoulute-one span input{
+  border-radius:5px ;
+  border: 1px solid #ced4da;
+  padding: 0px 0 0 6px;
+  width:210px;
+  margin:0px 5px 10px 4px;
+}
+.absoulute-one span input:hover {
+  border-color: rgb(119, 239, 255);
+}
+.rel-1 .signup-button{
+    border:1.5px solid black;
+    border-radius: 5px;
+    color: white;
+    background-color: #282c34;
+
+}
+@media(max-width: 600px){
+  .ph-display-none{
+      display: none;
+  }
+  .absoulute-one{
+    padding: 35px 35px 35px 44px;
+  }
+
+}
+@media(min-width: 600px){
+
+  .pc-display-none{
+      display: none !important;
+  }
+  .absoulute-one{
+    padding: 15px 15px 15px 24px;
+  }
+}
+.rel-1{
+  position: relative;
+}
+.move-around{
+  position: absolute;
+  left: 100%;
+  bottom: 100%;
+  transform: translate(-100%,100%);
+  cursor: pointer;
+}
+.close-button{
+  position: absolute;
+  left: 95%;
+  bottom:98%;
+  transform:translate(-100%,100%);
+  cursor: pointer;
+}
+.slidebar-menu-opened{
+  background-color: #111;
+  position: fixed;
+  top:0;
+  width:235px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  overflow-x: hidden;
+  z-index: 1;
+  height: 100%;
+}
+.slidebar-menu-closed{
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.slidebar-menu-opened p{
+  color: #818181;
+  padding: 10px 8px 5px 40px;
+  transition: color 0.5 ease;
+  cursor: pointer;
+}
+.slidebar-menu-opened p:hover{
+    color:#fff
+}
+.trans-holder{
+  transition: all 0.6s ease;
+}
+.slidebar-menu-opened .close-button2{
+  position: absolute;
+  left: 95%;
+  bottom:98%;
+  transform:translate(-100%,100%);
+  cursor: pointer;
+}
+.slidebar-menu-closed .close-button2{
+  display: none;
+  overflow: hidden;
+}
+.footer{
+ background-color: #1b1340;
+ border-radius: 3px;
+ font-family: Arial, Helvetica, sans-serif;
+ color: #fff;
+
+}
+.about-us{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+.about-us h1{
+  text-decoration: underline;
+}
+.thank-you{
+  color:rgb(255, 49, 49);
+  font-style: italic;
+}
+.about-us p{
+  color: rgb(104, 104, 104);
+  font-size: medium;
+  margin-bottom: 1px;
+  padding-bottom: 1px;
+}
+
+.single-form textarea{
+  width: 100%;
+  border-radius:5px;
+  border-color: #111;
+  padding:10px 15px 10px 15px;
+  margin:0 0 10px 0;
+  overflow: hidden;
+}
+.single-form select:focus{
+  outline-color: rgb(126, 206, 233);
+}
+.single-form textarea:focus{
+  outline-width: 5px;
+  outline-color: lightblue;
+}
+.single-form select{
+  width: 100%;
+  border-radius: 5px;
+}
+.rel-2 span{
+    margin-bottom: 7px;
+    margin-top:7px;
+    padding: 0;
+}
+.rel-2 span div{
+  margin:0;
+}
+.rel-2 .sign-up-logo{
+  font-weight: 700;
+  font-size: 22px;
+  font-style: oblique;
+  border-bottom: 1px solid #111;
+   cursor:default;
+   margin-bottom: 12px;
+ }
+ .rel-2 .signup-button{
+  border:1.5px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding:6px 15px;
+  color: white;
+  background-color: rgb(0, 126, 0);
+
+}
+.error-tag{
+  margin:0;
+  font-size: smaller;
+  color: rgb(255, 14, 14);
+}
+.submit-schedule{
+  margin-top:15px;
+  border:1.5px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding:6px 15px;
+  color: white;
+  background-color: rgb(0, 126, 0);
+}
+.create-pop-up{
+  width:30%;
+}
+.Contact-Us{
+  margin-top:15px;
+  margin-bottom: 5px;
+}
+.Contact-Us h1{
+  text-decoration: underline;
+}
+.Contact-Us ul{
+  list-style:none;
+  color: rgb(104, 104, 104);
+}
+.Contact-Us ul a{
+  color: rgb(104, 104, 104);
+}
