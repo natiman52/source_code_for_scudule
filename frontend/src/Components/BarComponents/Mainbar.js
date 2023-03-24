@@ -4,8 +4,8 @@ import SchedulePopup from '../SchedulePopup'
 
 export default function Mainbar(props) {
   const [PoPup, setPoPup]= useState([])
-  function ShowSchedule(event,grade,work,subject,date){
-    setPoPup(()=><SchedulePopup closehandler={HideSchedule} grade_current={grade} work={work} subject={subject} date={date} />)
+  function ShowSchedule(event,grade,work,subject,date,owner){
+    setPoPup(()=><SchedulePopup profile={props.profile} allgrade={props.allgrade} wholesubject={props.wholesubject} owner={owner} closehandler={HideSchedule} grade_current={grade} work={work} subject={subject} date={date} />)
   }
 function HideSchedule(){
     setPoPup( prevData => '' )
@@ -19,7 +19,7 @@ function HideSchedule(){
       {props.schedule.map( (e,key) =>{
                 return (
                   <>
-        <div key={key} onClick={ myevent => ShowSchedule(myevent,e.grade,e.work,e.subject,e.date ) } className='schedule-parent'>
+        <div key={key} onClick={ myevent => ShowSchedule(myevent,e.grade,e.work,e.subject,e.date,e.owner ) } className='schedule-parent'>
                   <div className='single-schedule'>
                     <div className='d-flex justify-content-between n-mr-0'>
                       <div>

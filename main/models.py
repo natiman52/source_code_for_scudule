@@ -2,6 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 import datetime
 from ethiopian_date.ethiopian_date import EthiopianDateConverter
+WholeSubject= [
+  ("Maths","Maths"),
+  ('Physics','Physics'),
+  ('Amharic','Amharic'),
+  ("English","English"),
+  ("Biology","Biology"),
+  ("Chemistry","Chemistry"),
+  ("Geogarphy","Geogarphy"),
+  ("Civic","Civic"),
+  ("History","History"),
+  ("Geez","Geez"),
+  ("Ethics","Ethics"),
+]
 def ConvertDate():
     today_date =EthiopianDateConverter.date_to_ethiopian(datetime.date.today())
     if(len(str(today_date[1])) < 2 ):
@@ -16,3 +29,6 @@ class Schedule(models.Model):
     work =models.CharField(max_length=179)
     grade= models.CharField(max_length=10,blank=True)
     date =models.DateField(default=ConvertDate,blank=True)
+class Profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    subject = models.CharField(choices=WholeSubject,default="Maths")

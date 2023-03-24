@@ -7,27 +7,95 @@
 *,*::after,*::before{
   box-sizing: content-box;
 }
-
+.close-button-test{
+  justify-self: end;
+}
 .absoulute-one{
   position:fixed;
   background-color: white;
-  text-align: center;
   z-index: 100;
   left:50%;
   top:50%;
- font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
  border-radius: 5px;
  transform: translate(-50%,-50%);
  box-shadow: 3px 3px 19px 1px rgb(141, 141, 141);
-
-  
 }
-.rel-1 .sign-up-logo{
+.login-class{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: grid;
+  text-align: center;
+}
+.login-class .sign-up-logo{
  font-weight: 700;
- font-size: 22px;
+  font-size: 22px;
+  font-style: oblique;
+  text-decoration: underline;
+  cursor:default;  
+}
+.login-class input{
+  border-radius:5px ;
+  border: 1px solid #ced4da;
+  padding: 0px 0 0 6px;
+  width:210px;
+  margin:0px 5px 10px 4px;
+}
+.login-class input:hover {
+  border-color: rgb(119, 239, 255);
+}
+.signup-class{
+  display: grid;
+}
+.rel-1{
+  position: relative;
+}
+.signup-class .sign-up-logo{
+ font-weight: 700;
+ font-size: 28px;
  font-style: oblique;
  text-decoration: underline;
   cursor:default;
+  justify-self: center;
+}
+.signup-class .signup-button{
+  border:1.5px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding:6px 15px;
+  color: white;
+  background-color: rgb(0, 126, 0);
+
+}
+.signup-class p{
+  margin-bottom: 10px;
+}
+.signup-class input{
+  border-radius:5px ;
+  border: 1px solid #ced4da;
+  padding: 1px 3px 1px 6px;
+  width:100%;
+  margin:0px 5px 0 0;
+}
+.signup-class input:hover {
+  border-color: rgb(119, 239, 255);
+}
+.signup-class input:focus{
+  outline-color:rgb(119, 239, 255) ;
+}
+.signup-helptext{
+  list-style-type: none;
+  margin-bottom: 0.54rem;
+  margin-top: 0;
+}
+.signup-helptext li{
+    font-size: 14px;
+    font-weight: 600;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 1.2;
+}
+.error-tag{
+  margin-bottom:6.5px;
+  font-size: smaller;
+  color: rgb(255, 56, 56);
+  font-weight: 650;
 }
 .create-icon{
   font-weight: 650;
@@ -37,23 +105,13 @@
   text-decoration: underline;
 }
 .absoulute-one span{
-  display: block;
   font-weight: 600;
   font-style: oblique;
   margin-left:auto;
   margin-right:auto;
 }
-.absoulute-one span input{
-  border-radius:5px ;
-  border: 1px solid #ced4da;
-  padding: 0px 0 0 6px;
-  width:210px;
-  margin:0px 5px 10px 4px;
-}
-.absoulute-one span input:hover {
-  border-color: rgb(119, 239, 255);
-}
-.rel-1 .signup-button{
+
+.login-class .signup-button{
     border:1.5px solid black;
     border-radius: 5px;
     color: white;
@@ -65,21 +123,23 @@
       display: none;
   }
   .absoulute-one{
-    padding: 35px 35px 35px 44px;
+    width: 80%;
   }
-
+  .rel-1{
+    padding: 10px 10px 35px 22px;
+  }
+  
 }
 @media(min-width: 600px){
-
+  .absoulute-one{
+    width:37%;
+  }
   .pc-display-none{
       display: none !important;
   }
-  .absoulute-one{
-    padding: 15px 15px 15px 24px;
+  .rel-1{
+    padding: 10px 15px 15px 24px;
   }
-}
-.rel-1{
-  position: relative;
 }
 .move-around{
   position: absolute;
@@ -178,35 +238,6 @@
   width: 100%;
   border-radius: 5px;
 }
-.rel-2 span{
-    margin-bottom: 7px;
-    margin-top:7px;
-    padding: 0;
-}
-.rel-2 span div{
-  margin:0;
-}
-.rel-2 .sign-up-logo{
-  font-weight: 700;
-  font-size: 22px;
-  font-style: oblique;
-  border-bottom: 1px solid #111;
-   cursor:default;
-   margin-bottom: 12px;
- }
- .rel-2 .signup-button{
-  border:1.5px solid rgb(255, 255, 255);
-  border-radius: 5px;
-  padding:6px 15px;
-  color: white;
-  background-color: rgb(0, 126, 0);
-
-}
-.error-tag{
-  margin:0;
-  font-size: smaller;
-  color: rgb(255, 14, 14);
-}
 .submit-schedule{
   margin-top:15px;
   border:1.5px solid rgb(255, 255, 255);
@@ -231,4 +262,17 @@
 }
 .Contact-Us ul a{
   color: rgb(104, 104, 104);
+}
+.error-class{
+  background-color:rgb(255, 151, 151);
+  margin-bottom:5px;
+}
+.error-class p {
+  margin:0;
+  padding:0.8rem 2rem .8rem 2rem;
+  border-radius: 10px;
+  font-size:12px;
+  font-weight: 800;
+  color:rgb(189, 0, 0);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

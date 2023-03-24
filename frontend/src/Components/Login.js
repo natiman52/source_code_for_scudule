@@ -4,16 +4,45 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios"
 export default function Login(props){
     const [Password,setPassword] = useState()
+    const [Correct,SetCorrect] = useState()
+    const [Errortext,setErrortext] =useState()
     const [Username,setUsername] = useState()
-    const [ UsernameTaken,setUsernameTaken ] = useState()
+    const [UsernameTaken,setUsernameTaken ] = useState()
+    const [Confirmed, setConfirmed] = useState()
+    const[Errortext2,setErrortext2] =useState()
     function handleUsername(e){
         setUsername(prevData => e.target.value)
     }
     function handlePassword(e){
         setPassword(prevData => e.target.value)
+        console.log( "")
+        if(e.target.value.length > 8){
+            if(/[A-Z]/.test(e.target.value) && /\d/.test(e.target.value)){
+                SetCorrect(e => 1)
+            }
+        }else{
+            SetCorrect( () => 0)
+        }
+    }
+    function handleConfirmPassword(e){
+        if(Password === e.target.value){
+            setConfirmed(() => true)
+        }else{
+            setConfirmed(() => false)
+        }
     }
     async function SignUp(){
-        if(Password  && Username ){
+        if(Correct === 0){
+            setErrortext(() => <>Please choose another password</>)
+        }else if(Correct === 1){
+            setErrortext(() => <></>)
+        }
+        if(!Confirmed){
+            setErrortext2(() => <>The passwords didn't match</>)
+        }else if(Confirmed){
+            setErrortext2(() => <></>)
+        }
+        if((Password  && Username) && (Correct === 1 && Confirmed) ){
             var csrftoken =props.get_cookie("csrftoken")
             const apiCall = await axios.post(`${props.originurl}api/create_user/`,{username:Username,password:Password},{headers:{
                 'Accept': 'application/json',
@@ -33,17 +62,30 @@ export default function Login(props){
     return (
         <>
     <div className='absoulute-one'>
-        <div className='rel-2'>
+        <div className='rel-1 signup-class'>
+        <FontAwesomeIcon onClick={props.hide} className='close-button-test' icon={faClose}/>
         <p className='sign-up-logo'> SignUp</p>
-        <span>
-        <div>Username:<input type="text" onChange={handleUsername}  placeholder='Username'/></div>
+        <div className="username-form">
+        <p>Username</p>
+        <input type="text" onChange={handleUsername}  placeholder='Username'/>
         <div>
         <p className="error-tag">{UsernameTaken && <>please change username</> }</p>    
         </div>
-        </span>
-        <span>Password: <input type="Password" onChange={handlePassword}  placeholder='Password'/></span>
+        </div>
+        <div className="password">
+        <p>Password</p>
+        <input style={Correct === 1 ? {outlineColor:"green"} : Correct === 0 ? {outlineColor:"red"} : {} } type="Password" onChange={handlePassword}  placeholder='Password'/>
+        <p className="error-tag">{Errortext}</p>    
+        <ul className="signup-helptext">
+            <li>Password must be longer than 8 letters.</li>
+            <li>It must contain both numbers and letters.</li>
+            <li>You must add at least one uppercase letter</li>
+        </ul>
+        <p>Confirm password</p>
+        <input style={Confirmed ? {outlineColor:"green"}: {outlineColor:"red"}} type="password" onChange={handleConfirmPassword}/>
+        <p className="error-tag">{Errortext2}</p>    
+        </div>
         <button className='signup-button' onClick={SignUp}> SignUp </button> 
-        <FontAwesomeIcon onClick={props.hide} className='close-button' icon={faClose}/>
         </div>
     </div>
         </>

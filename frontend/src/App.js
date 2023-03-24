@@ -40,27 +40,27 @@ const WholeSubject= [
 var AllGrade = [
   "9A","9B","10A","10B","11A","11B","12A","12B"
 ]
+const OriginUrl =process.env.REACT_APP_ORIGIN_URL
 function App() {
   const [ShowLoginForm,setShowLoginForm] = useState(false)
   const [ShowNavBar,setShowNavBar] = useState(false)
   const[ShowCreateForm,setShowCreateForm] = useState(false)
   const [AuthUser, setAuthUser] =useState( window.localStorage.getItem("file_name")? true : false)
   const [isStaff,setIsStaff] = useState(window.localStorage.getItem("is_staff"))
-  const [UserDisplayName,setUserDisplayName]=useState(window.localStorage.getItem('username'))
+  const [Profile,setProfile]=useState(window.localStorage.getItem('profile'))
   const [Schedule,setSchedule]= useState([])
   const [CurrentSubject,setCurrentSubject] = useState([])
   const [CurrentGrade,setcurrentGrade]=useState([])
-  const OriginUrl =process.env.REACT_APP_ORIGIN_URL
-  console.log(`heelo ${document.cookie}`)
+
   async function getSchedule(e){
     var subject_value = e.target.attributes.self_value ? e.target.attributes.self_value.value : CurrentSubject
     var grade_value =e.target.attributes.self_value_grade ? e.target.attributes.self_value_grade.value : CurrentGrade 
     if(subject_value === "All"){
-      axios.defaults.withCredentials = true
-      await axios.get(`${OriginUrl}api/get_schedule/?grade=${grade_value}`,{withCredentials:true}).then( e =>{
+      await axios.get(`${OriginUrl}api/get_schedule/?grade=${grade_value}`).then( e =>{
         setSchedule(()=> [...e.data] )
         setCurrentSubject(() => subject_value )
         setcurrentGrade(() => grade_value)
+        console.log(e.data[0])
       })
     }else {
       await axios(`${OriginUrl}api/get_schedule/?subject=${subject_value}&grade=${grade_value}`).then( e => {
@@ -89,25 +89,13 @@ function App() {
       setAuthUser( () => false )
       setIsStaff(prevData => false)
   }
-  async function getAuthToken(event,username,password){
-    var csrftoken =getCookie("csrftoken")
-      await axios.post(`${OriginUrl}api/auth_ver/`,{username:username,password:password},{headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'X-CSRFToken': csrftoken
-      }}).then( e => {
-      window.localStorage.setItem("file_name",e.data.token)
-      setAuthUser( () => true )
-      setShowLoginForm(prevData => false )
-    })
-  }
+
   useEffect( ()=>{
     const StartSubject = async () =>{
       await axios(`${OriginUrl}api/get_schedule/?grade=9A`).then( e => {
         setSchedule(prevData => [ ...e.data ])
         setCurrentSubject(() => "All" )
         setcurrentGrade(() => "9A" )
-        console.log(`heelo ${document.cookie}`)
       })
     }
     if(AuthUser){
@@ -121,7 +109,7 @@ function App() {
           localStorage.setItem("is_staff",e.data.is_staff)
           localStorage.setItem("username",e.data.username)
           setIsStaff(prev => e.data.is_staff)
-          setUserDisplayName(prev => e.data.username)
+          setProfile(prev =>{return {...e.data}})
         })
       }
       get_user_model()
@@ -139,11 +127,11 @@ function App() {
     <div className='wrapper'>
       <Navbar originurl={OriginUrl} get_cookie={getCookie} User={AuthUser} isstaff={isStaff} opennav={OpenNav} logout={LogOut} createshow={ CreateFromShow }  loginShow={ LoginFormShow }/>
 
-    {ShowLoginForm && <Signup AuthLog={getAuthToken} loginHide={ LoginFormHide } />}
+    {ShowLoginForm && <Signup getCookie={getCookie} setAuthUser={setAuthUser} setShowLoginForm={setShowLoginForm}  loginHide={ LoginFormHide } />}
     {ShowCreateForm && <CreateSchedule get_cookie={getCookie} allgrade={AllGrade} wholesubject={WholeSubject} originurl={OriginUrl}  hideme={CreateFormHide}/>}
     <div className='d-flex'>
       <Sidebar currentsubject={CurrentSubject}  wholesubject={WholeSubject} clickHandler={getSchedule}/>
-      <Mainbar activesubject={CurrentSubject} activegrade={CurrentGrade} allgrade={AllGrade} scheduleretriever={getSchedule} wholesubject={WholeSubject} schedule={Schedule}/>
+      <Mainbar activesubject={CurrentSubject} profile={Profile} activegrade={CurrentGrade} allgrade={AllGrade} scheduleretriever={getSchedule} wholesubject={WholeSubject} schedule={Schedule}/>
     </div>
     <Footer/>
     </div>

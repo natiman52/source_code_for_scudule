@@ -23,9 +23,6 @@ class FilterRequestData(APIView):
         if (queryset.exists()):
             serializerobject= ScheduleSerializer(queryset,many=True)
             response_test=Response(serializerobject.data)
-            response_test.set_cookie("user","test_user")    
-            response_test.cookies['user']['samesite'] = 'None'
-            response_test.cookies['user']['secure'] = True
             return response_test
         else:
             return Response()
