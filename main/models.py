@@ -31,4 +31,7 @@ class Schedule(models.Model):
     date =models.DateField(default=ConvertDate,blank=True)
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    subject = models.CharField(choices=WholeSubject,default="Maths")
+    subject = models.CharField(choices=WholeSubject,max_length=100 ,default="Maths")
+
+    def __str__(self) -> str:
+        return self.user.username

@@ -30,9 +30,6 @@
     font-style: italic;
     color: rgb(31, 31, 31);
 }
-.title-holder{
-    margin-left:13px;
-}
 .title-holder h1{
     margin-bottom: 0;
 }
@@ -76,11 +73,20 @@
 .navbar-toggler{
     margin-right:10px;
 }
-.logo-container{
-    margin-left:20px;
-    margin-top:5px;
-    margin-bottom: 5px;
+@media(min-width:315px){
+    .logo-container{
+        margin-left:20px;
+        margin-top:5px;
+        margin-bottom: 5px;
+    }
 }
+@media (max-width:315px) {
+    .logo-container{
+      margin-left:0;
+      margin-top:5px;
+      margin-bottom: 5px;
+    }
+  }
 .abgs{
     font-size: x-large;
     font-weight: 600;
@@ -125,4 +131,14 @@
     margin:5px 0 8px 0;   
     font-weight: 550;
     font-size: 16px;
+}
+.profile-link{
+    color:black;
+    text-decoration: none;
+    margin-right:8px;
+    font-weight: 600;
+    font-size:20px;
+}
+.profile-link:hover{
+    color:black;
 }

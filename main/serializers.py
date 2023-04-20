@@ -6,9 +6,10 @@ from django.contrib.auth.models import User
 class ScheduleSerializer(serializers.ModelSerializer):
     class Meta:
         model=Schedule
-        fields =["owner","subject",'work','date',"grade"]
+        fields =["pk","owner","subject",'work','date',"grade"]
 
 class tokenSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['pk',"is_staff","username"]
+        fields = ['pk',"is_staff","username","profile"]
+        depth= 1

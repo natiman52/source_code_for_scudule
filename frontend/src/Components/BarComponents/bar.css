@@ -116,6 +116,23 @@ padding: 8px;
 .work-popup:focus{
     outline-color: rgb(189, 189, 189);
 }
+.test123{
+    border-radius:10px;
+    margin:8px 0px 25px 0px;
+    height:35px;
+    outline: none;
+}
+.edit-work-input{
+    resize: none;
+    width :100%;
+    border-radius: 5px;
+    margin:8px 0px 15px 0px;
+    padding:5px 5px 5px 10px;
+    height:80px;
+    outline-color:rgb(212, 212, 255) ;
+    
+
+}
 .edit-delete-container{
     justify-self: end;
 }
@@ -160,6 +177,11 @@ padding: 8px;
     .background-dcit1{
         display: flex;
         justify-content: center;
+    }
+}
+@media(max-width:355px){
+    .background-dcit1{
+        margin-left:0;
     }
 }
 .filter-box-subject{

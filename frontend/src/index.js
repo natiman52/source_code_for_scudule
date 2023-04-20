@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter,Routes,Route} from "react-router-dom"
+import Profile from './Components/Profile'
+import HomePage from "./HomePage.js"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 <BrowserRouter>
  <Routes>
-    <Route index element={<App/>}/>
-    <Route path="/profile" element={<h1>hello world</h1>}/>
+   <Route index element={<HomePage/>}/>
+    <Route path='/schedule' element={<App/>}/>
+    <Route path="/profile" element={<Profile/>}/>
  </Routes>
 </BrowserRouter>
 

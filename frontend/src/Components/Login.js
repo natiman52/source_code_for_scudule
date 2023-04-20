@@ -10,6 +10,10 @@ export default function Login(props){
     const [UsernameTaken,setUsernameTaken ] = useState()
     const [Confirmed, setConfirmed] = useState()
     const[Errortext2,setErrortext2] =useState()
+    const[Subject,setSubject]=useState('Maths')
+    function handleSelect(e){
+        setSubject(prev => e.target.value)
+    }
     function handleUsername(e){
         setUsername(prevData => e.target.value)
     }
@@ -44,7 +48,7 @@ export default function Login(props){
         }
         if((Password  && Username) && (Correct === 1 && Confirmed) ){
             var csrftoken =props.get_cookie("csrftoken")
-            const apiCall = await axios.post(`${props.originurl}api/create_user/`,{username:Username,password:Password},{headers:{
+            await axios.post(`${props.originurl}api/create_user/`,{username:Username,password:Password,subject:Subject},{headers:{
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrftoken
@@ -71,6 +75,16 @@ export default function Login(props){
         <div>
         <p className="error-tag">{UsernameTaken && <>please change username</> }</p>    
         </div>
+        </div>
+        <div onChange={handleSelect} defaultValue="Maths" className="select-form">
+            <p>Grade</p>
+            <select>
+                {
+                    props.allgrade.map(e => {
+                        return <option value={e}>{e}</option>
+                    })
+                }
+            </select>
         </div>
         <div className="password">
         <p>Password</p>

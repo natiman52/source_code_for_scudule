@@ -106,10 +106,12 @@ function App() {
           'Content-Type': 'application/json',
           'X-CSRFToken': csrftoken
         }}).then(e =>{
+          console.log(e)
           localStorage.setItem("is_staff",e.data.is_staff)
-          localStorage.setItem("username",e.data.username)
+          localStorage.setItem("profile", JSON.stringify(e.data) )
           setIsStaff(prev => e.data.is_staff)
           setProfile(prev =>{return {...e.data}})
+          console.log(e)
         })
       }
       get_user_model()
@@ -125,13 +127,13 @@ function App() {
   return (
     <>
     <div className='wrapper'>
-      <Navbar originurl={OriginUrl} get_cookie={getCookie} User={AuthUser} isstaff={isStaff} opennav={OpenNav} logout={LogOut} createshow={ CreateFromShow }  loginShow={ LoginFormShow }/>
+      <Navbar originurl={OriginUrl} allgrade={WholeSubject.slice(1)} get_cookie={getCookie} User={AuthUser} isstaff={isStaff} opennav={OpenNav} logout={LogOut} createshow={ CreateFromShow }  loginShow={ LoginFormShow }/>
 
     {ShowLoginForm && <Signup getCookie={getCookie} setAuthUser={setAuthUser} setShowLoginForm={setShowLoginForm}  loginHide={ LoginFormHide } />}
-    {ShowCreateForm && <CreateSchedule get_cookie={getCookie} allgrade={AllGrade} wholesubject={WholeSubject} originurl={OriginUrl}  hideme={CreateFormHide}/>}
+    {ShowCreateForm && <CreateSchedule getschedule={getSchedule} get_cookie={getCookie} allgrade={AllGrade} wholesubject={WholeSubject} originurl={OriginUrl}  hideme={CreateFormHide}/>}
     <div className='d-flex'>
       <Sidebar currentsubject={CurrentSubject}  wholesubject={WholeSubject} clickHandler={getSchedule}/>
-      <Mainbar activesubject={CurrentSubject} profile={Profile} activegrade={CurrentGrade} allgrade={AllGrade} scheduleretriever={getSchedule} wholesubject={WholeSubject} schedule={Schedule}/>
+      <Mainbar activesubject={CurrentSubject} profile={Profile} activegrade={CurrentGrade} allgrade={AllGrade} scheduleretriever={getSchedule} wholesubject={WholeSubject} getcookies={getCookie} schedule={Schedule}/>
     </div>
     <Footer/>
     </div>
